@@ -4,8 +4,8 @@ namespace Files
 {
 	class MainClass
 	{
-		static void Read() {
-			string path = @"C:\Users\brugernavn\Desktop\test.txt";
+		static void Read(string path) {
+			
 			string[] lines = System.IO.File.ReadAllLines (path);
 
 			for (int i=0; i<lines.Length; i++) {
@@ -16,12 +16,11 @@ namespace Files
 
 	
 
-		static void Write() {
+		static void Write(string path) {
 			string tekst = "Lang\n kedelig\n tekst!";
 			//string path = @"/Users/ptx/Desktop/test.txt";
 
-			string path = @"C:\Users\brugernavn\Desktop\test.txt";
-			// ^- Husk at ændre brugernavn!
+			
 
 			System.IO.File.WriteAllText (path, tekst);
 
@@ -31,8 +30,19 @@ namespace Files
 		public static void Main (string[] args)
 		{
 
-			Write ();
-			Read ();
+
+
+			string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+			Console.WriteLine ("Dit skrivebord ligger på: " + desktop);
+
+			string p = System.IO.Path.Combine (desktop, "test.txt");
+
+			Console.WriteLine ("Fuld sti til fil: " + p);
+
+
+			Write (p);
+			Read (p);
 
 			
 			Console.ReadKey();
