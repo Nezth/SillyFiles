@@ -5,12 +5,16 @@ namespace Files
 	class MainClass
 	{
 		static void Read() {
+			string path = @"C:\Users\brugernavn\Desktop\test.txt";
+			string[] lines = System.IO.File.ReadAllLines (path);
 
 			for (int i=0; i<lines.Length; i++) {
 				Console.WriteLine (lines [i]);
 			}
 
 		}
+
+	
 
 		static void Write() {
 			string tekst = "Lang\n kedelig\n tekst!";
